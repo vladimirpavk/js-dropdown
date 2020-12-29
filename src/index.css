@@ -56,6 +56,30 @@ font-family: 'Merriweather', serif;
   
   .dropdown-content a:hover {background-color: #f1f1f1;}
   
-  .dropdown:hover .dropdown-content {
+  .dropdown1:hover .dropdown-content {
     display: block;
   }
+
+  .dropdown2:hover .dropdown-content {
+      display: block;
+  }
+
+.dropdown3:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown4:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown5:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content1{
+    border: 1px solid violet;
+}
+
+.dropdown-content1:hover .dropdown-content{
+    display: block;
+}
