@@ -1,104 +1,40 @@
-/*CSS file fot index.html*/
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-/*
-font-family: 'Merriweather', serif;
-*/
-.menu{
-    width: 100%;
-    border: 1px solid yellow;
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+
+@font-face {
+    font-family: 'iskraFont';
+    src: url('./fonts/vivaldii.TTF') format('truetype');
+};
+
+html {
+    background-color: yellowgreen;        
 }
 
-.liststyle{
-    background-color: lightblue;
-    border: 1px solid green;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;    
+body {
+    background-color: green;
+    padding: 10px;
+    position: absolute;
 }
 
-.liststyle li{
-    display: block;
-    float:left;
-    border: 1px solid red;
-    margin-left: 10px;
+header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: ghostwhite;
 }
 
-.liststyle li a{
-    font-family: 'Anton', sans-serif;
-    font-size: 2rem;
-    color: white;
+header h1 {
+    font-family: 'iskraFont';
+    font-size: 5rem;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    border: 1px solid red;
 }
 
-.liststyle li a:hover{
-    background-color: rgb(192, 192, 206);
+nav {
+    background-color: gold;
+    width: 500px;
 }
 
-/*drop down menu 1*/
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .dropdown-content_x {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content_x a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1;}
-  
-  .dropdown1:hover .dropdown-content {
-    display: block;
-  }
-
-  .dropdown2:hover .dropdown-content {
-      display: block;
-  }
-
-.dropdown3:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown4:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown5:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content1{
-    border: 1px solid violet;
-}
-
-.dropdown-content1:hover + .dropdown-content_x{
-    display: block;
-    border: 5px solid blue;
+footer {
+    background-color: indianred;  
+    width: 500px;
 }
