@@ -73,9 +73,79 @@ let combine = function(anyArray, pointer){
     return combine([...anyArray], pointer);    
 }
 
+let combine_1 = function(anyArray, pointer){       
+    if(pointer != 0){       
+        //print out current configuration
+        console.log([...anyArray]);
+
+        //exchange places niz[pointer-1] i niz[pointer]        
+        let temp = anyArray[pointer-1];
+        anyArray[pointer-1] = anyArray[pointer];
+        anyArray[pointer] = temp;
+
+        return combine([...anyArray], --pointer)
+    }
+   
+    if(JSON.stringify(anyArray)===JSON.stringify(niz)) return "The End";
+
+    pointer = anyArray.length-1;
+    return combine([...anyArray], pointer);    
+}
+
+let result = [];
+let resultLength = 3;
+
+let combineX = (duzinaNiza, startPos, result, resultLength)=>{
+    if(duzinaNiza==0){
+        console.log(result);
+    }
+    for(let i=startPos; i<niz.length-duzinaNiza; i++){
+        result[resultLength-duzinaNiza] = niz[i];
+        combineX(duzinaNiza-1, i+1, result, resultLength);
+    }
+}
+
+//combineX(3, 0, result, resultLength);
+
 console.log(
     combine([...niz], [...niz].length-1)
 );
+
+let fibonnaci = {
+    [Symbol.iterator](){
+        let pre = 0, cur = 1;
+        return{
+            next(){
+                [pre, cur] = [cur, pre + cur];
+                return {done: false, value: cur}
+            }        
+        }
+    }
+}
+
+for(let x of fibonnaci){
+    if(x>1000) break;
+    console.log(x);
+}
+
+tempArray = ['a', 'b', 'c'];
+for(let x of tempArray) console.log(x);
+
+let fibonnaci2 = {
+    [Symbol.iterator]: function*(){
+        let pre=0, cur=1;
+        for(;;){
+            let temp = pre;
+            pre = cur;
+            cur += temp;
+            yield cur;
+        }
+    }
+}
+for(let x of fibonnaci2){
+    if(x>10000) break;
+    console.log(x);
+}
 
 /* if(pointer != 0){
     //exchange places niz[pointer-1] i niz[pointer]
