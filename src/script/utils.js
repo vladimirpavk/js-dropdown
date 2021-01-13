@@ -1,4 +1,6 @@
-let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
+const { performance } = require('perf_hooks');
+
+let nizOrigin  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 let niz = [...nizOrigin];
 
 let combine_1 = function(anyArray, pointer){   
@@ -52,4 +54,42 @@ let combine = function(anyArray, startPointer, endPointer){
     return combine([...anyArray], startPointer, endPointer);    
 }
 
-combine([...niz], 0, [...niz].length - 1);
+/* combine([...niz], 0, [...niz].length - 1); */
+const isEven = (element)=>{
+    if((element/2 - Math.ceil(element/2))!=0) return false;
+    else return true;
+}
+
+const newArray = [];
+
+const perm = (pointer, anyArray)=>{
+    if(pointer==1){
+        //console.log(anyArray)
+        newArray.push(anyArray);
+    }
+    else{
+        perm(pointer - 1, anyArray);
+
+        for(let i=0; i<pointer-1; i++){
+            if(isEven(pointer)){
+                //swap(a[0]) i a[k-1]
+                let temp = anyArray[pointer-1];
+                anyArray[pointer-1] = anyArray[0];
+                anyArray[0] = temp;
+            }
+            else{
+                //swap(a[i]) i a[k-1]
+                let temp = anyArray[pointer-1];
+                anyArray[pointer-1] = anyArray[i];
+                anyArray[i] = temp;
+            }
+            perm(pointer - 1, anyArray);
+        }
+    }
+}
+const startTime = performance.now();
+perm(niz.length, niz);
+const endTime = performance.now();
+console.log(endTime - startTime);
+
+Date.now();
