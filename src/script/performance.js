@@ -1,14 +1,13 @@
 const { performance } = require('perf_hooks');
+const { heapPerm, comb } = require('./utils.common-js.js');
 
-let nizOrigin  = ['a', 'b', 'c', 'd', 'e', 'f'];
+let nizOrigin  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 let niz = [...nizOrigin];
 
-const startTime = performance.now();
-//perm(niz.length, niz, newArrayRecursive);
-//console.log('new array', newArray);
+let resultArray = [];
+comb(niz, resultArray);
+
+/* const startTime = performance.now();
+heapPerm(niz.length, niz, resultArray);
 const endTime = performance.now();
-console.log(endTime - startTime);
-
-Date.now();
-
-console.log(permIterative(niz.length, niz));
+console.log(endTime - startTime, 'num_of_permutations :', resultArray.length); */

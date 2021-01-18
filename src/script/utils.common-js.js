@@ -17,7 +17,7 @@ const heapPerm = (pointer, anyArray, newArray)=>{
         newArray.push([...anyArray]);
     }
     else{
-        perm(pointer - 1, anyArray, newArray);
+        heapPerm(pointer - 1, anyArray, newArray);
 
         for(let i=0; i<pointer-1; i++){
             if(isEven(pointer)){
@@ -32,7 +32,7 @@ const heapPerm = (pointer, anyArray, newArray)=>{
                 anyArray[pointer-1] = anyArray[i];
                 anyArray[i] = temp;
             }
-            perm(pointer - 1, anyArray, newArray);
+            heapPerm(pointer - 1, anyArray, newArray);
         }
     }
 }
@@ -81,7 +81,33 @@ const heapPermIterative = (pointer, anyArray)=>{
     return result;
 }
 
+
+/*
+    Binary combination algorithm
+*/
+
+const stringAND = (par1, par2)=>{
+    //par1 is a character i.e. 'a', 'e', 'A', 'F'
+    //par 2 is a character only '0' or '1'
+    if(par2 === '0') return '0'
+    else return par1;
+}
+
+const comb = (anyArray, resultArray)=>{
+    //anyArray.length-1, num_of_combinations = 2^(anyArray.length-1)
+    let arrLength = anyArray.length-1;
+    let num_of_combinations = Math.pow(2, arrLength-1) - 1;
+    let revArray = anyArray.reverse();
+
+    for(let i = 1; i < num_of_combinations-1; i++){
+        //console.log(Number(i).toString(2));
+    }
+    console.log('comb', anyArray[3], Number(5).toString(2));
+
+}
+
 module.exports = {
     'heapPerm' : heapPerm,
-    'heapPermIterative' : heapPermIterative
+    'heapPermIterative' : heapPermIterative,
+    'comb' : comb
 }
