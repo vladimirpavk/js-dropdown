@@ -89,21 +89,42 @@ const heapPermIterative = (pointer, anyArray)=>{
 const stringAND = (par1, par2)=>{
     //par1 is a character i.e. 'a', 'e', 'A', 'F'
     //par 2 is a character only '0' or '1'
-    if(par2 === '0') return '0'
-    else return par1;
+    if(par2 === '1') return par1
+    else return '0';
+}
+
+const comb_2 = (anyArray, resultArray)=>{
+    //anyArray.length-1, num_of_combinations = 2^(anyArray.length-1)
+    let arrLength = anyArray.length;
+    let num_of_combinations = Math.pow(2, arrLength) - 1;
+
+    let revArray = anyArray.reverse();
+
+    for(let i = 1; i < num_of_combinations+1; i++){
+        //console.log(i, Number(i).toString(2).split(""));
+        let compareString = Number(i).toString(2).split("").reverse();        
+        let result = [];
+        for(let j = 0; j < arrLength; j++){
+            stringAND(revArray[j], compareString[j])!=0 ? result.push(revArray[j])  : null;
+        }
+        console.log(result.reverse());
+    }
 }
 
 const comb = (anyArray, resultArray)=>{
     //anyArray.length-1, num_of_combinations = 2^(anyArray.length-1)
-    let arrLength = anyArray.length-1;
-    let num_of_combinations = Math.pow(2, arrLength-1) - 1;
-    let revArray = anyArray.reverse();
+    let arrLength = anyArray.length;
+    let num_of_combinations = Math.pow(2, arrLength) - 1;   
 
-    for(let i = 1; i < num_of_combinations-1; i++){
-        //console.log(Number(i).toString(2));
+    for(let i = 1; i < num_of_combinations+1; i++){
+        //console.log(i, Number(i).toString(2).split(""));
+        let compareString = Number(i).toString(2).split("").reverse();        
+        let result = [];
+        for(let j = 0; j < arrLength; j++){
+            stringAND(anyArray[j], compareString[j])!=0 ? result.push(anyArray[j])  : null;
+        }
+        console.log(result.reverse());
     }
-    console.log('comb', anyArray[3], Number(5).toString(2));
-
 }
 
 module.exports = {
