@@ -111,7 +111,7 @@ const combAll = (anyArray, direction)=>{
 
     for(let i = 1; i < num_of_combinations+1; i++){
         //console.log(i, Number(i).toString(2).split(""));
-        let compareString = Number(i).toString(2).split("").reverse();        
+        let compareString = Number(i).toString(2).split("").reverse();          
         let result = [];
         for(let j = 0; j < arrLength; j++){
             stringAND(tempArray[j], compareString[j])!=0 ? result.push(tempArray[j])  : null;
@@ -122,8 +122,46 @@ const combAll = (anyArray, direction)=>{
     return resultArray;
 }
 
+
+/*
+    Binary combination algorithm
+    anyArray - array of elements to be combinated, all possible combinations
+    combAllStrict - returns an array of arrays all possible combinations
+    direction - 'f' from first element, 'b' from last element
+    length - length of the combination array,
+    strict - if true exact length false max length
+*/
+const combAllStrict = (anyArray, direction, length, strict)=>{
+    let resultArray = [];
+    //anyArray.length-1, num_of_combinations = 2^(anyArray.length-1)
+    let arrLength = anyArray.length;
+    let num_of_combinations = Math.pow(2, arrLength) - 1;   
+
+    let tempArray = [];
+    if(direction==='f') tempArray = [...anyArray]
+    else tempArray=[...anyArray.reverse()];
+
+    for(let i = 1; i < num_of_combinations+1; i++){
+        //console.log(i, Number(i).toString(2).split(""));
+        let compareString = Number(i).toString(2).split("").reverse();          
+        let result = [];
+        for(let j = 0; j < arrLength; j++){
+            stringAND(tempArray[j], compareString[j])!=0 ? result.push(tempArray[j])  : null;
+        }
+        if(strict){
+            if(result.length===length) resultArray.push(result.reverse());
+        }
+        else{
+            if(result.length<=length) resultArray.push(result.reverse());
+        } 
+    }
+
+    return resultArray;
+}
+
 module.exports = {
     'heapPerm' : heapPerm,
     'heapPermIterative' : heapPermIterative,
-    'combAll' : combAll
+    'combAll' : combAll,
+    'combAllStrict' : combAllStrict
 }
