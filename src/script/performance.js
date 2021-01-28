@@ -41,6 +41,7 @@ for(let n of fib){
 }
 
 const it = makeRangeIterator(0, 100, 5);
+
 let result = it.next();
 while(!result.done){   
     console.log(result.value);
@@ -50,9 +51,13 @@ console.log('Num of iterations ', result.value);
 
 const rit = makeRangeIterator2(0, 100, 3);
 
-//for(let x of rit) console.log(x);
-rit.forEach(element => {
-    console.log(element);
-});
+for(let x of rit) console.log(x);
 
-console.log('kraj');
+const lib = (n, call)=>{
+    if(n<=1) return;
+    console.log(n, call);
+    lib(n-2, 'first call');
+    lib(n-2, 'second call');
+}
+
+console.log(lib(8, 'start'));
