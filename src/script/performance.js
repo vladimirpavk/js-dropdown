@@ -5,11 +5,17 @@ const
     heapPerm,
     combAll,
     heapPermIterative,
-    combAllStrict,
-    fib,
-    makeRangeIterator,
-    makeRangeIterator2
+    combAllStrict    
 } = require('./utils.common-js.js');
+
+const {    
+    fib2,
+    makeRangeIterator,
+    makeRangeIterator2,
+    fact,
+    fib,
+    fibMemo
+} = require('./dynamic.common-js');
 
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
 let niz = [...nizOrigin];
@@ -35,29 +41,6 @@ let BinaryCombinationsStrict = combAllStrict(niz, 'f', 3, true);
 endTime = performance.now();
 console.log(endTime - startTime, 'num_of_permutations :', BinaryCombinationsStrict.length);
 
-for(let n of fib){
-    if(n > 1000) break;
-    console.log(n);
-}
+console.log(fibMemo(50));
 
-const it = makeRangeIterator(0, 100, 5);
-
-let result = it.next();
-while(!result.done){   
-    console.log(result.value);
-    result = it.next();
-}
-console.log('Num of iterations ', result.value);
-
-const rit = makeRangeIterator2(0, 100, 3);
-
-for(let x of rit) console.log(x);
-
-const lib = (n, call)=>{
-    if(n<=1) return;
-    console.log(n, call);
-    lib(n-2, 'first call');
-    lib(n-2, 'second call');
-}
-
-console.log(lib(8, 'start'));
+console.log(fact(150));
