@@ -14,7 +14,9 @@ const {
     makeRangeIterator2,
     fact,
     fib,
-    fibMemo
+    fibMemo,
+    gridWalker,
+    gridWalkerMemo
 } = require('./dynamic.common-js');
 
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
@@ -41,6 +43,26 @@ let BinaryCombinationsStrict = combAllStrict(niz, 'f', 3, true);
 endTime = performance.now();
 console.log(endTime - startTime, 'num_of_permutations :', BinaryCombinationsStrict.length);
 
-console.log(fibMemo(50));
+startTime = performance.now();
+//fib(50);
+endTime = performance.now();
+console.log('Fibonacchi non-optimized...',  endTime-startTime);
 
-console.log(fact(150));
+startTime = performance.now();
+fibMemo(50);
+endTime = performance.now();
+console.log('Fibonacchi optimized...',  endTime-startTime);
+
+startTime = performance.now();
+console.log(gridWalker(20,100));
+endTime = performance.now();
+console.log('gridWalker non-optimized...',  endTime-startTime);
+
+startTime = performance.now();
+console.log(gridWalkerMemo(20, 100));
+endTime = performance.now();
+console.log('gridWalker optimized...',  endTime-startTime);
+
+
+
+//console.log(gridWalker(200, 100));

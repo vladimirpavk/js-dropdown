@@ -67,11 +67,30 @@ const fibMemo = (n, memo = {})=>{
     return memo[n];
 }
 
+const gridWalker = (m, n)=>{
+    if(m===0 || n===0) return 0;
+    if(m==1 && n==1) return 1;
+    return gridWalker(m-1, n) + gridWalker(m, n-1);
+}
+
+const gridWalkerMemo = (m, n, memo = {})=>{
+    let key = m+','+n;  
+    if(key in memo) return memo[key];
+
+    if(m==1 && n==1) return 1;
+    if(m===0 || n===0) return 0;
+            
+    memo[key] = gridWalker(m-1, n, memo) + gridWalker(m, n-1, memo);
+    return memo[key];
+}
+
 module.exports = {    
     'fib2' : fibonacci,
     'makeRangeIterator' : makeRangeIterator,
     'makeRangeIterator2' : makeRangeIterator2,
     'fact': fact,
     'fib': fib,
-    'fibMemo' : fibMemo
+    'fibMemo' : fibMemo,
+    'gridWalker': gridWalker,
+    'gridWalkerMemo': gridWalkerMemo
 }
