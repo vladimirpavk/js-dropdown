@@ -54,12 +54,12 @@ endTime = performance.now();
 console.log('Fibonacchi optimized...',  endTime-startTime);
 
 startTime = performance.now();
-console.log(gridWalker(20,100));
+//console.log(gridWalker(20,100));
 endTime = performance.now();
 console.log('gridWalker non-optimized...',  endTime-startTime);
 
 startTime = performance.now();
-console.log(gridWalkerMemo(20, 100));
+console.log(gridWalkerMemo(1920, 1080));
 endTime = performance.now();
 console.log('gridWalker optimized...',  endTime-startTime);
 

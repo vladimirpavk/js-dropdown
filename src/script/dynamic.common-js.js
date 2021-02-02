@@ -61,7 +61,11 @@ const fib = (n)=>{
 }
 
 const fibMemo = (n, memo = {})=>{
-    if(n in memo) return memo[n];
+    if(n in memo) 
+    {
+        return memo[n];
+    }
+
     if(n<=2) return 1;
     memo[n] = fibMemo(n-1, memo) + fibMemo(n-2, memo);
     return memo[n];
@@ -75,13 +79,45 @@ const gridWalker = (m, n)=>{
 
 const gridWalkerMemo = (m, n, memo = {})=>{
     let key = m+','+n;  
-    if(key in memo) return memo[key];
+    if(key in memo){
+        return memo[key];
+    }
 
     if(m==1 && n==1) return 1;
     if(m===0 || n===0) return 0;
             
-    memo[key] = gridWalker(m-1, n, memo) + gridWalker(m, n-1, memo);
+    memo[key] = gridWalkerMemo(m-1, n, memo) + gridWalkerMemo(m, n-1, memo);
     return memo[key];
+}
+
+const sumArrayRecursive = (sumArray, sum = 0, pointer)=>{
+    if(n < 0 || pointer==0) return sum;
+    return sum+sumArrayRecursive(sumArrayRecursive[pointer--], sum, pointer);
+}
+
+const sumArray = (sumArray)=>{
+    let sum = 0;
+    for(let i = 0; i<sumArray.length-1; i++)  sum+=sumArray[i];
+}
+
+const canSum = (target, choices)=>{
+    temp = [];
+    for(let i = 0; i < choices.length-1; i++){
+        let tempSum = choices[i]+sumArray(temp);
+        if(tempSum == target) return true;
+
+
+    }
+}
+
+const canSumRecursive = (target, numbers)=>{
+    if(targetSum === 0) return true;
+
+    for(let num of numbers){
+        if( canSum(targetSum-num, numbers) === true ) return true;
+    }
+
+    return false;
 }
 
 module.exports = {    
