@@ -100,24 +100,34 @@ const sumArray = (sumArray)=>{
     for(let i = 0; i<sumArray.length-1; i++)  sum+=sumArray[i];
 }
 
-const canSum = (target, choices)=>{
-    temp = [];
-    for(let i = 0; i < choices.length-1; i++){
-        let tempSum = choices[i]+sumArray(temp);
-        if(tempSum == target) return true;
-
-
-    }
-}
-
 const canSumRecursive = (target, numbers)=>{
     if(targetSum === 0) return true;
+    if(targetSum < 0) return false;
 
     for(let num of numbers){
         if( canSum(targetSum-num, numbers) === true ) return true;
     }
 
     return false;
+}
+
+const howSum = (targetSum, numbers, memo={})=>{
+    if(targetSum in memo) return memo[targetSum];
+
+    if(targetSum === 0) return [];
+    if(targetSum < 0) return null;
+
+    for(let num of numbers){
+        remainder = targetSum-num;
+        const returnArray = howSum(remainder, numbers, memo);
+        if(returnArray != null){
+            memo[targetSum] = [...returnArray, num];;
+            return memo[targetSum];
+        }
+    }
+
+    memo[target] = null;
+    return memo[targetSum];
 }
 
 module.exports = {    
@@ -128,5 +138,6 @@ module.exports = {
     'fib': fib,
     'fibMemo' : fibMemo,
     'gridWalker': gridWalker,
-    'gridWalkerMemo': gridWalkerMemo
+    'gridWalkerMemo': gridWalkerMemo,
+    'howSum': howSum
 }

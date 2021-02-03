@@ -16,7 +16,8 @@ const {
     fib,
     fibMemo,
     gridWalker,
-    gridWalkerMemo
+    gridWalkerMemo,
+    howSum
 } = require('./dynamic.common-js');
 
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
@@ -66,3 +67,5 @@ console.log('gridWalker optimized...',  endTime-startTime);
 
 
 //console.log(gridWalker(200, 100));
+
+console.log(howSum(7, [2,3]));
