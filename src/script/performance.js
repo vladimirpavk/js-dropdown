@@ -1,5 +1,4 @@
 const { performance } = require('perf_hooks');
-console.log(require('./utils.common-js.js'));
 const 
 { 
     heapPerm,
@@ -17,13 +16,20 @@ const {
     fibMemo,
     gridWalker,
     gridWalkerMemo,
-    howSum
+    howSum,
+    bestSum,
+    bestSumMemo
 } = require('./dynamic.common-js');
 
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
 let niz = [...nizOrigin];
 
-let heapPermResultArray = [];
+console.log(bestSum(7, [5, 3, 4, 7]));
+console.log(bestSum(8, [1, 3, 5]));
+console.log(bestSumMemo(100, [1, 2, 5, 25]));
+
+
+/* let heapPermResultArray = [];
 let startTime = performance.now();
 heapPerm(niz.length, niz, heapPermResultArray);
 let endTime = performance.now();
@@ -63,9 +69,8 @@ startTime = performance.now();
 console.log(gridWalkerMemo(1920, 1080));
 endTime = performance.now();
 console.log('gridWalker optimized...',  endTime-startTime);
-
+ */
 
 
 //console.log(gridWalker(200, 100));
 
-console.log(howSum(7, [2,3]));

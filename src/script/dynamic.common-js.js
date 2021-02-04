@@ -127,9 +127,48 @@ const howSum = (targetSum, numbers, memo={})=>{
     }
 
     memo[target] = null;
-    return memo[targetSum];
+    return memo[targetSum];    
 }
 
+const bestSum = (targetSum, numbers)=>{
+    if(targetSum === 0) return [];
+    if(targetSum < 0) return null;
+
+    let shortestComb = null;
+
+    for(let num of numbers){
+        let returnArray = bestSum(targetSum-num, numbers);
+        if(returnArray!==null){
+            const combination = [...returnArray, num];
+            if(shortestComb===null || combination.length < shortestComb.length){
+                shortestComb=combination;
+            }
+        }
+    }
+
+    return shortestComb;
+}
+
+const bestSumMemo = (targetSum, numbers, memo = {})=>{
+    if(targetSum in memo) return memo[targetSum];
+    if(targetSum === 0) return [];
+    if(targetSum < 0) return null;
+
+    let shortestComb = null;
+
+    for(let num of numbers){
+        let returnArray = bestSumMemo(targetSum-num, numbers, memo);
+        if(returnArray!==null){
+            const combination = [...returnArray, num];
+            if(shortestComb===null || combination.length < shortestComb.length){
+                shortestComb=combination;
+            }
+        }
+    }
+
+    memo[targetSum] = shortestComb;
+    return shortestComb;
+}
 module.exports = {    
     'fib2' : fibonacci,
     'makeRangeIterator' : makeRangeIterator,
@@ -139,5 +178,7 @@ module.exports = {
     'fibMemo' : fibMemo,
     'gridWalker': gridWalker,
     'gridWalkerMemo': gridWalkerMemo,
-    'howSum': howSum
+    'howSum': howSum,
+    'bestSum': bestSum,
+    'bestSumMemo': bestSumMemo
 }
