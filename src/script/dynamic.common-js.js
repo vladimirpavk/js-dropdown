@@ -167,8 +167,22 @@ const bestSumMemo = (targetSum, numbers, memo = {})=>{
     }
 
     memo[targetSum] = shortestComb;
-    return shortestComb;
+    return shortestComb;    
 }
+
+const sumArrayRec = (arrayToSum)=>{
+    if(arrayToSum.length===0) return 0;
+
+    let minNumber = null;
+    console.log(minNumber);
+
+    if(minNumber === null || minNumber > arrayToSum[0]){
+        minNumber = arrayToSum[0];
+    }
+
+    return +arrayToSum[0] + sumArrayRec([...arrayToSum].splice(1, arrayToSum.length-1));
+}
+
 module.exports = {    
     'fib2' : fibonacci,
     'makeRangeIterator' : makeRangeIterator,
@@ -180,5 +194,6 @@ module.exports = {
     'gridWalkerMemo': gridWalkerMemo,
     'howSum': howSum,
     'bestSum': bestSum,
-    'bestSumMemo': bestSumMemo
+    'bestSumMemo': bestSumMemo,
+    'sumArrayRec': sumArrayRec
 }
