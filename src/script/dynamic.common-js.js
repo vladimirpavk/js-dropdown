@@ -53,6 +53,7 @@ function* makeRangeIterator2(start = 0, end = Infinity, step = 1){
 const fact = (n)=>{
     if(n>=1) return n*fact(n-1);
     else return 1;
+    console.log('kraj');
 }
 
 const fib = (n)=>{

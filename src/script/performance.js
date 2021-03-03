@@ -25,11 +25,13 @@ const {
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
 let niz = [...nizOrigin];
 
+console.log(fact(5));
+
 /* console.log(bestSum(7, [5, 3, 4, 7]));
 console.log(bestSum(8, [1, 3, 5]));
 console.log(bestSumMemo(100, [1, 2, 5, 25])); */
 
-console.log(sumArrayRec([5, 3, 4, 7]));
+//console.log(sumArrayRec([5, 3, 4, 7]));
 
 /* let heapPermResultArray = [];
 let startTime = performance.now();
