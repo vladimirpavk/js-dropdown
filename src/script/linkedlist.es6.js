@@ -1,3 +1,4 @@
+//linkedlist class
 class Node{
     constructor(value, nextPointer){
         this.value = value;
