@@ -22,6 +22,9 @@ const {
     sumArrayRec
 } = require('./dynamic.common-js');
 
+import * as proba from './utils.es6.js';
+console.log(proba);
+
 let nizOrigin  = ['a', 'b', 'c', 'd', 'e'];
 let niz = [...nizOrigin];
 
