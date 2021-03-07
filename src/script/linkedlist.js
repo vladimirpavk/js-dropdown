@@ -62,6 +62,47 @@ class LinkedList{
         this.printListReverse(pointer.nextPointer);
         console.log(pointer.value);
     }
+
+    deleteNode(value){
+        //delete Node that has value=value
+        let pointer = this.startPointer;
+        if(pointer.value===value){
+            this.startPointer = pointer.nextPointer;
+            return;
+        }
+
+        while(pointer != null){
+            if((pointer.nextPointer).value===value){
+                pointer.nextPointer = (pointer.nextPointer).nextPointer;
+                return;
+            }
+            pointer = pointer.nextPointer;
+        }
+    }
+
+    deletedNodeWithIndex(index){
+        if(index === 0){
+            this.startPointer = this.startPointer.nextPointer;
+            return;
+        }
+
+        let pointer = this.startPointer;
+        for(let i = 0; i<index-1; i++){
+            if(pointer===null) return "Index exceedes array length";
+            pointer = pointer.nextPointer;
+        }
+        pointer.nextPointer = (pointer.nextPointer).nextPointer;
+    }
+
+    prikažiPavletovuListuŽelja(){
+        let lista = [
+            'Da nauči da piše jer trenutno ne zna',
+            'Da nauči da se ponaša jer trenutno ne zna',
+            'Da nauči da programira kad poraste',
+            'Da ne viče na mamu i tatu kad se naljuti'
+        ];
+        console.log(lista);
+    }
 }
 
 module.exports = {
