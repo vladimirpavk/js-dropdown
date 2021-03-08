@@ -1,0 +1,12 @@
+{
+  "name": "linkedlist",
+  "version": "1.0.0",
+  "description": "One way linked list",
+  "main": "linkedlist.es6.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Pavković",
+  "license": "ISC",
+  "type": "module"
+}
